@@ -1,0 +1,41 @@
+{
+  "name": "express-typescript-eslint-prettier-kit",
+  "version": "1.0.0",
+  "main": "./src/index.ts",
+  "author": "iamhrayr",
+  "license": "ISC",
+  "scripts": {
+    "build": "tsc",
+    "dev": "ts-node-dev --respawn --transpileOnly ./src/index.ts",
+    "dev:debug": "node --inspect --require ts-node/register ./src/index.ts",
+    "lint:ts": "eslint . --ext .ts",
+    "lint:ts:fix": "yarn lint:ts -- --fix",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^2.18.0",
+    "@typescript-eslint/parser": "^2.18.0",
+    "eslint": "^6.8.0",
+    "eslint-config-prettier": "^6.10.0",
+    "eslint-plugin-prettier": "^3.1.2",
+    "husky": "^4.2.1",
+    "lint-staged": "^10.0.7",
+    "prettier": "^1.19.1",
+    "ts-node-dev": "^1.0.0-pre.44",
+    "typescript": "^3.7.5"
+  },
+  "lint-staged": {
+    "src/**/*.{ts}": [
+      "eslint . --fix",
+      "git add"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  }
+}
